@@ -32,14 +32,18 @@ public class Money {
 
     public Money add(Money money) {
         this.amount += money.getAmount();
-        System.out.println(amount);
+        System.out.println("Account: " + amount);
         return this;
     }
 
     public Money subtract(Money money) {
-        this.amount += ((-1) * money.getAmount());
-        System.out.println(amount);
+        this.amount += (-money.getAmount());
+        System.out.println("Account: " + amount);
         return this;
+    }
+
+    public Currency getCurrency() {
+        return this.currency;
     }
 
     @Override
