@@ -7,20 +7,13 @@ package bankInheritance;
 
 /**
  *
+ *
  * @author wesley.mcmillen
  */
-public class Currency {
+public class CheckingAccount extends Account {
 
-    private String name;
-    private String symbol;
+    public CheckingAccount(Money balance) {
+        super(balance);
 
-    public Currency(String name, String symbol) {
-
-    }
-/**why did i ever make this 
- */
-    public boolean equals(Object object) {
-
-        return true;
     }
 }

@@ -16,7 +16,9 @@ public class Money {
     Scanner input = new Scanner(System.in);
     private Currency currency;
     private long amount;
-
+/**
+ * gives amount value back to money
+ */
     public long getAmount() {
         return amount;
     }
@@ -24,18 +26,27 @@ public class Money {
     public Money(Currency currency, double balance) {
         amount = (long) balance;
     }
-
+/**
+ * 
+ * @return returns nothing and isn't used
+ */
     public String getAmountString() {
         String string = "";
         return string;
     }
-
+/**
+ * 
+ * @returns amount of money after deposit
+ */
     public Money add(Money money) {
         this.amount += money.getAmount();
         System.out.println("Account: " + amount);
         return this;
     }
-
+/**
+ * 
+ * @returns amount of money after withdrawal 
+ */
     public Money subtract(Money money) {
         this.amount += (-money.getAmount());
         System.out.println("Account: " + amount);
@@ -48,7 +59,14 @@ public class Money {
 
     @Override
     public String toString() {
-        String string = "";
+        String string = "" + amount;
         return string;
+    }
+/**
+ * 
+ * @return not used
+ */
+    public Money Multiply() {
+        return this;
     }
 }

@@ -11,43 +11,49 @@ import java.util.ArrayList;
  *
  * @author wesley.mcmillen
  */
-abstract class Account {
+public class SavingsAccount extends Account {
 
     private Money balance;
     private ArrayList<Money> history = new ArrayList<Money>();
+    private double intrRate = 1.03;
 
-    public Account(Money balance) {
+    public SavingsAccount(Money balance) {
+        super(balance);
         this.balance = balance;
     }
-/**withdraw and deposit into account 
- */
+
+    /**
+     * accrues interest and adds it
+     */
+    public double Accrue(Money m) {
+        double accrue = m.getAmount() * intrRate;
+        return accrue;
+    }
+
+    /**
+     * override of withdraw and deposit methods so i can use Accrue in withdraw
+     * @param m
+     */
+    @Override
     public void withdraw(Money m) {
         this.balance.subtract(m);
         history.add(new Money(m.getCurrency(), -m.getAmount()));
         this.toString();
+        this.Accrue(balance);
     }
 
+    @Override
     public void deposit(Money m) {
         this.balance.add(m);
         history.add(new Money(m.getCurrency(), m.getAmount()));
         this.toString();
     }
-/**gets the balance of account 
- */
-    public Money getBalance() {
-        System.out.println(balance);
-        return balance;
-    }
-/** makes a string 
- */
-    @Override
-    public String toString() {
-        String string = "Account holds " + this.balance.getAmount();
-        return string;
 
-    }
-/**prints arraylist history of savings account transactions  
- */
+    /**
+     *
+     * gives the transaction history of the savings account
+     */
+    @Override
     public void printHistory(Account account) {
         System.out.println("History:");
         for (int i = 0; i < history.size(); i++) {
@@ -59,15 +65,4 @@ abstract class Account {
         }
 
     }
-/**wasn't sure how to do the transaction stuff or where the transactions were 
- * coming from or any of that jazz. 
- */
-    public void getHistory(Transaction tran) {
-
-        System.out.println("Old Balance     Change      New Balance     Date");
-        for (int i = 0; i < 10; i++) {
-
-        }
-    }
-
 }

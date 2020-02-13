@@ -8,7 +8,7 @@ package bankInheritance;
 import java.util.Scanner;
 
 /**
- *
+ * PREDICTION 6 HOURS
  * @author paul.kline
  */
 public class Runner {
@@ -29,62 +29,35 @@ public class Runner {
         System.out.println("Now that currencies symbol");
         String symbol = input.nextLine();
         Currency currency1 = new Currency(type, symbol);
-        System.out.println("Please enter amount of currency to add to new account");
         double money = 1000;
         Money money1 = new Money(currency1, money);
-        Account account1 = new Account(money1);
-        System.out.println("Withdrawal time");
-        money = 400;
-        Money money2 = new Money(currency1, (money));
-        account1.withdraw(money2);
-        account1.getBalance();
-        System.out.println("Time to get paid");
-        money = 500;
-        money2 = new Money(currency1, money);
-        account1.deposit(money2);
-        account1.getBalance();
-        System.out.println("Time to get paid");
-        money = 250;
-        money2 = new Money(currency1, money);
-        account1.deposit(money2);
-        account1.getBalance();
-        System.out.println("Time to get paid");
-        money = 5000;
-        money2 = new Money(currency1, money);
-        account1.deposit(money2);
-        account1.getBalance();
-        System.out.println("Withdrawal time");
-        money = 3500;
-        money2 = new Money(currency1, money);
-        account1.withdraw(money2);
-        account1.getBalance();
-        System.out.println("Time to get paid");
-        money = 2050;
-        money2 = new Money(currency1, money);
-        account1.deposit(money2);
-        account1.getBalance();
-        System.out.println("Withdrawal time");
-        money = 570;
-        money2 = new Money(currency1, money);
-        account1.withdraw(money2);
-        account1.getBalance();
-        System.out.println("Withdrawal time");
-        money = 500;
-        money2 = new Money(currency1, money);
-        account1.withdraw(money2);
-        account1.getBalance();
-        System.out.println("Time to get paid");
-        money = 1000;
-        money2 = new Money(currency1, money);
-        account1.deposit(money2);
-        account1.getBalance();
-        System.out.println("Withdrawal time");
-        money = 1500;
-        money2 = new Money(currency1, money);
-        account1.withdraw(money2);
-        account1.getBalance();
-
+        SavingsAccount account1 = new SavingsAccount(money1);
+        for (int i = 0; i < 3; i++) {
+            money = 500 * Math.random() + 1;
+            Money money2 = new Money(currency1, (money));
+            account1.deposit(money2);
+            account1.getBalance();
+            for (int j = 0; j < 1; j++) {
+                money = 250 * Math.random() + 1;
+                money2 = new Money(currency1, (money));
+                account1.withdraw(money2);
+                account1.getBalance();
+            }
+        }
         account1.printHistory(account1);
+        money = 1000;
+        Money money3 = new Money(currency1, money);
+        Loan moneyLoan = new Loan(money3);
+        money = 500;
+        money3 = new Money(currency1, money);
+        moneyLoan.loanPay(money3);
+        money = 450;
+        money3 = new Money(currency1, money);
+        moneyLoan.loanPay(money3);
+        money = 70;
+        money3 = new Money(currency1, money);
+        moneyLoan.loanPay(money3);
+
     }
 
 }
